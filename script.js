@@ -17,38 +17,37 @@ document.querySelectorAll(".animate-on-scroll").forEach((el) => {
 });
 
 // Animated counter for stats
-function animateCounter(element, target, duration = 2000) {
-  const start = 0;
-  const increment = target / (duration / 16);
-  let current = start;
+function animateCounter(counter, target) {
+  let count = 0;
+  const speed = 75; // lower = faster
+  const increment = target / speed;
 
-  const timer = setInterval(() => {
-    current += increment;
-    element.textContent = Math.floor(current);
-
-    if (current >= target) {
-      element.textContent = target;
-      clearInterval(timer);
+  const updateCount = () => {
+    count += increment;
+    if (count < target) {
+      counter.innerText = Math.floor(count).toLocaleString("en-IN");
+      requestAnimationFrame(updateCount);
+    } else {
+      counter.innerText = target.toLocaleString();
     }
-  }, 16);
+  };
+
+  updateCount();
 }
 
 // Trigger counter animation when stats section is visible
-const statsObserver = new IntersectionObserver(
-  function (entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const counters = entry.target.querySelectorAll(".stat-number");
-        counters.forEach((counter) => {
-          const target = parseInt(counter.getAttribute("data-count"));
-          animateCounter(counter, target);
-        });
-        statsObserver.unobserve(entry.target);
-      }
-    });
-  },
-  { threshold: 0.5 }
-);
+const statsObserver = new IntersectionObserver(function (entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const counters = entry.target.querySelectorAll(".stat-number");
+      counters.forEach((counter) => {
+        const target = parseInt(counter.getAttribute("data-count"));
+        animateCounter(counter, target);
+      });
+      statsObserver.unobserve(entry.target);
+    }
+  });
+});
 
 const statsSection = document.querySelector(".stats");
 if (statsSection) {
