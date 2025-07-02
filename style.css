@@ -277,18 +277,7 @@ body {
 }
 
 .pricing-card.featured {
-  transform: scale(1.05);
   border: 2px solid #667eea;
-  box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
-}
-
-.pricing-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 30px 60px rgba(102, 126, 234, 0.2);
-}
-
-.pricing-card.featured:hover {
-  transform: scale(1.05) translateY(-10px);
 }
 
 .pricing-header h3 {
@@ -349,39 +338,6 @@ body {
 .about-content p {
   font-size: 1.25rem;
   color: var(--text-muted);
-}
-
-.about-hero {
-  background: var(--card-bg);
-  backdrop-filter: blur(20px);
-  border-radius: 30px;
-  padding: 4rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  margin-bottom: 5rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.about-hero h1 {
-  font-size: 3.5rem;
-  font-weight: 800;
-  background: var(--primary-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  margin-bottom: 1.5rem;
-  position: relative;
-  z-index: 2;
-}
-
-.about-hero p {
-  font-size: 1.25rem;
-  color: var(--text-muted);
-  max-width: 600px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 2;
 }
 
 /* Stats Section */
