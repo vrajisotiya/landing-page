@@ -338,6 +338,7 @@ body {
 .about-content p {
   font-size: 1.25rem;
   color: var(--text-muted);
+  text-align: justify;
 }
 
 /* Stats Section */
